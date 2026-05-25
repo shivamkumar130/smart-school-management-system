@@ -99,6 +99,22 @@ function AdminDashboard() {
 
             <p className="mt-4 text-gray-600">Manage class timetables</p>
           </Link>
+          <Link
+            to="/attendance-camera"
+            className="
+              bg-white
+              p-8
+              rounded-3xl
+              shadow-lg
+              hover:-translate-y-2
+              transition
+              "
+
+          >
+            <h2 className="text-2xl font-bold text-blue-900">AI Attendance</h2>
+
+            <p className="mt-3 text-gray-600">Open camera attendance system</p>
+          </Link>
         </div>
       </div>
     </div>

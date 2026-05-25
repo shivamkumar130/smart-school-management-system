@@ -1,15 +1,21 @@
 const mongoose = require("mongoose");
 
 const timetableSchema = new mongoose.Schema({
-  subject: String,
-
-  teacher: String,
+  className: String,
 
   day: String,
 
-  time: String,
+  period1: String,
 
-  className: String,
+  period2: String,
+
+  period3: String,
+
+  period4: String,
+
+  period5: String,
+
+  period6: String,
 });
 
 module.exports = mongoose.model("Timetable", timetableSchema);

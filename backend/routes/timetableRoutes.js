@@ -4,38 +4,66 @@ const router = express.Router();
 
 const Timetable = require("../models/Timetable");
 
-// GET
+// ================= GET =================
 router.get("/", async (req, res) => {
-  const data = await Timetable.find();
+  try {
+    const data = await Timetable.find();
 
-  res.json(data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
 });
 
-// ADD
+// ================= ADD =================
 router.post("/", async (req, res) => {
-  const newData = new Timetable(req.body);
+  try {
+    const newData = new Timetable(req.body);
 
-  await newData.save();
+    await newData.save();
 
-  res.json(newData);
+    res.json(newData);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
 });
 
-// UPDATE
+// ================= UPDATE =================
 router.put("/:id", async (req, res) => {
-  const updated = await Timetable.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  try {
+    const updated = await Timetable.findByIdAndUpdate(
+      req.params.id,
 
-  res.json(updated);
+      req.body,
+
+      { new: true },
+    );
+
+    res.json(updated);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
 });
 
-// DELETE
+// ================= DELETE =================
 router.delete("/:id", async (req, res) => {
-  await Timetable.findByIdAndDelete(req.params.id);
+  try {
+    await Timetable.findByIdAndDelete(req.params.id);
 
-  res.json({
-    message: "Deleted",
-  });
+    res.json({
+      message: "Deleted",
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
 });
 
 module.exports = router;

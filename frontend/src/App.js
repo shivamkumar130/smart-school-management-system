@@ -17,6 +17,7 @@ import ResetPassword from "./pages/ResetPassword";
 import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
+import AttendanceCamera from "./pages/AttendanceCamera";
 
 // ================= ADMIN / TEACHER CRUD PAGES =================
 import AdminStudents from "./pages/AdminStudents";
@@ -26,8 +27,6 @@ import AdminAttendance from "./pages/AdminAttendance";
 import AdminResults from "./pages/AdminResults";
 import AdminHomework from "./pages/AdminHomework";
 import AdminTimetable from "./pages/AdminTimetable";
-
-
 
 // ================= STUDENT VIEW PAGES =================
 import StudentNotices from "./pages/StudentNotices";
@@ -84,6 +83,7 @@ function App() {
         <Route path="/admin/timetable" element={<AdminTimetable />} />
 
         <Route path="/admin/academics" element={<Academics />} />
+        <Route path="/attendance-camera" element={<AttendanceCamera />} />
 
         {/* ================= TEACHER ROUTES ================= */}
 

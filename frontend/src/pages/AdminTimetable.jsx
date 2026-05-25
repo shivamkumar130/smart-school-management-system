@@ -19,37 +19,31 @@ export default function AdminTimetable() {
         {
           name: "period1",
           label: "Period 1",
-          type: "textarea",
         },
 
         {
           name: "period2",
           label: "Period 2",
-          type: "textarea",
         },
 
         {
           name: "period3",
           label: "Period 3",
-          type: "textarea",
         },
 
         {
           name: "period4",
           label: "Period 4",
-          type: "textarea",
         },
 
         {
           name: "period5",
           label: "Period 5",
-          type: "textarea",
         },
 
         {
           name: "period6",
           label: "Period 6",
-          type: "textarea",
         },
       ]}
       columns={[

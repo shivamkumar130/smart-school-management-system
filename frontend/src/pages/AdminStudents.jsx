@@ -1,6 +1,7 @@
 import ManagementPage from "../components/ManagementPage";
 
 export default function TeacherStudents() {
+
   return (
     <ManagementPage
       title="Student Management"
@@ -35,9 +36,16 @@ export default function TeacherStudents() {
           name: "email",
           label: "Email",
         },
+
         {
-          name: "AddharNumber",
+          name: "aadharNumber",
           label: "Aadhar Number",
+        },
+
+        {
+          name: "image",
+          label: "Student Image",
+          type: "file",
         },
       ]}
       columns={[
@@ -70,10 +78,11 @@ export default function TeacherStudents() {
           key: "email",
           label: "Email",
         },
+
         {
-          key: "AddharNumber",
+          key: "aadharNumber",
           label: "Aadhar Number",
-        }
+        },
       ]}
     />
   );

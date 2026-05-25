@@ -22,9 +22,9 @@ export default function Teachers() {
         {teachers.map((teacher) => (
           <div key={teacher._id} className="bg-white p-6 rounded-3xl shadow">
             <img
-              src={teacher.image}
-              alt=""
-              className="w-32 h-32 rounded-full mx-auto"
+              src={`http://localhost:5000/uploads/${teacher.image}`}
+              alt={teacher.name}
+              className="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-blue-900"
             />
 
             <h2 className="text-2xl font-bold text-center mt-4">

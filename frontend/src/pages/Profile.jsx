@@ -25,16 +25,16 @@ function Profile() {
       // FALLBACK LOCALSTORAGE
       setStudent({
         name: localStorage.getItem("name"),
-
         email: localStorage.getItem("email"),
-
         className: localStorage.getItem("className"),
-
         fatherName: localStorage.getItem("fatherName"),
-
         mobile: localStorage.getItem("mobile"),
-
         rollNumber: localStorage.getItem("rollNumber"),
+
+        // fallback attendance
+        presentCount: 0,
+        absentCount: 0,
+        attendancePercentage: 0,
       });
     }
   };
@@ -56,7 +56,7 @@ function Profile() {
       </h1>
 
       {/* PROFILE CARD */}
-      <div className="bg-white rounded-3xl shadow-xl p-10 max-w-5xl">
+      <div className="bg-white rounded-3xl shadow-xl p-10 max-w-5xl mx-auto">
         {/* TOP SECTION */}
         <div className="flex flex-col md:flex-row items-center gap-8">
           {/* PROFILE ICON */}
@@ -109,13 +109,32 @@ function Profile() {
 
           {/* ATTENDANCE */}
           <div className="bg-gray-100 p-6 rounded-2xl">
-            <h3 className="text-2xl font-bold text-blue-900 mb-3">
+            <h3 className="text-2xl font-bold text-blue-900 mb-4">
               Attendance
             </h3>
 
-            <p className="text-xl text-gray-700">
-              {student.attendance || "N/A"}%
-            </p>
+            <div className="space-y-3">
+              <p className="text-xl text-gray-700">
+                Present:
+                <span className="font-bold text-green-600 ml-2">
+                  {student.presentCount || 0}
+                </span>
+              </p>
+
+              <p className="text-xl text-gray-700">
+                Absent:
+                <span className="font-bold text-red-600 ml-2">
+                  {student.absentCount || 0}
+                </span>
+              </p>
+
+              <p className="text-xl text-gray-700">
+                Attendance:
+                <span className="font-bold text-blue-700 ml-2">
+                  {student.attendancePercentage || 0}%
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

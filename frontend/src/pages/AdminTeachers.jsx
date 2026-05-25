@@ -6,19 +6,66 @@ export default function AdminTeachers() {
       title="Teacher Management"
       endpoint="http://localhost:5000/api/teachers"
       fields={[
-        { name: "name", label: "Teacher Name" },
-        { name: "qualification", label: "Qualification" },
-        { name: "experience", label: "Experience" },
-        { name: "subject", label: "Subject" },
-        { name: "mobile", label: "Mobile" },
-        { name: "email", label: "Email", type: "email" },
+        {
+          name: "name",
+          label: "Teacher Name",
+        },
+
+        {
+          name: "subject",
+          label: "Subject",
+        },
+
+        {
+          name: "qualification",
+          label: "Qualification",
+        },
+
+        {
+          name: "experience",
+          label: "Experience",
+        },
+
+        {
+          name: "email",
+          label: "Email",
+        },
+        {
+          name: "image",
+          label: "Teacher Image",
+          type: "file",
+        }
       ]}
       columns={[
-        { key: "name", label: "Name" },
-        { key: "qualification", label: "Qualification" },
-        { key: "experience", label: "Experience" },
-        { key: "subject", label: "Subject" },
-        { key: "email", label: "Email" },
+        {
+          key: "name",
+          label: "Name",
+        },
+
+        {
+          key: "subject",
+          label: "Subject",
+        },
+
+        {
+          key: "qualification",
+          label: "Qualification",
+        },
+
+        {
+          key: "experience",
+          label: "Experience",
+        },
+
+        {
+          key: "email",
+          label: "Email",
+        },
+        {
+          key: "image",
+          label: "Teacher Image",
+          type: "file",
+        }
       ]}
     />
   );

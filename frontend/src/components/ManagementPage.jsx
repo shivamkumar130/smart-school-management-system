@@ -1,18 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-
 import axios from "axios";
 
-function ManagementPage({
-  title,
-
-  endpoint,
-
-  fields = [],
-
-  columns = [],
-
-  beforeSave,
-}) {
+function ManagementPage({ title, endpoint, fields = [], columns = [] }) {
   // ================= INITIAL FORM =================
   const initialForm = useMemo(() => {
     const obj = {};
@@ -50,8 +39,20 @@ function ManagementPage({
 
   // ================= CHANGE =================
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
 
+    // FILE INPUT
+    if (files) {
+      setFormData((prev) => ({
+        ...prev,
+
+        [name]: files[0],
+      }));
+
+      return;
+    }
+
+    // NORMAL INPUT
     setFormData((prev) => ({
       ...prev,
 
@@ -64,22 +65,39 @@ function ManagementPage({
     e.preventDefault();
 
     try {
-      const payload = beforeSave ? beforeSave(formData) : formData;
+      const hasFileField = fields.some((field) => field.type === "file");
+
+      let payload = formData;
+
+      let config = {};
+
+      // FILE FORM
+      if (hasFileField) {
+        const formPayload = new FormData();
+
+        Object.keys(formData).forEach((key) => {
+          formPayload.append(key, formData[key]);
+        });
+
+        payload = formPayload;
+
+        config = {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        };
+      }
 
       // UPDATE
       if (editingId) {
-        await axios.put(
-          `${endpoint}/${editingId}`,
-
-          payload,
-        );
+        await axios.put(`${endpoint}/${editingId}`, payload, config);
 
         alert("Updated Successfully");
       }
 
       // ADD
       else {
-        await axios.post(endpoint, payload);
+        await axios.post(endpoint, payload, config);
 
         alert("Added Successfully");
       }
@@ -92,6 +110,8 @@ function ManagementPage({
       fetchItems();
     } catch (error) {
       console.log(error);
+
+      alert("Something went wrong");
     }
   };
 
@@ -134,7 +154,13 @@ function ManagementPage({
 
         <button
           onClick={handlePrint}
-          className="bg-green-600 text-white px-5 py-3 rounded-xl"
+          className="
+          bg-green-600
+          text-white
+          px-5
+          py-3
+          rounded-xl
+          "
           type="button"
         >
           Print
@@ -144,7 +170,13 @@ function ManagementPage({
       {/* FORM */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-3xl shadow-lg mb-10"
+        className="
+        bg-white
+        p-6
+        rounded-3xl
+        shadow-lg
+        mb-10
+        "
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {fields.map((field) => {
@@ -157,7 +189,12 @@ function ManagementPage({
                   placeholder={field.label}
                   value={formData[field.name] || ""}
                   onChange={handleChange}
-                  className="p-4 border rounded-xl min-h-32"
+                  className="
+                  p-4
+                  border
+                  rounded-xl
+                  min-h-32
+                  "
                 />
               );
             }
@@ -170,7 +207,11 @@ function ManagementPage({
                   name={field.name}
                   value={formData[field.name] || ""}
                   onChange={handleChange}
-                  className="p-4 border rounded-xl"
+                  className="
+                  p-4
+                  border
+                  rounded-xl
+                  "
                 >
                   <option value="">Select {field.label}</option>
 
@@ -183,7 +224,26 @@ function ManagementPage({
               );
             }
 
-            // INPUT
+            // FILE INPUT
+            if (field.type === "file") {
+              return (
+                <input
+                  key={field.name}
+                  type="file"
+                  name={field.name}
+                  accept="image/*"
+                  onChange={handleChange}
+                  className="
+                  p-4
+                  border
+                  rounded-xl
+                  bg-white
+                  "
+                />
+              );
+            }
+
+            // NORMAL INPUT
             return (
               <input
                 key={field.name}
@@ -192,7 +252,11 @@ function ManagementPage({
                 placeholder={field.label}
                 value={formData[field.name] || ""}
                 onChange={handleChange}
-                className="p-4 border rounded-xl"
+                className="
+                p-4
+                border
+                rounded-xl
+                "
               />
             );
           })}
@@ -200,7 +264,14 @@ function ManagementPage({
 
         <button
           type="submit"
-          className="mt-6 bg-blue-900 text-white px-6 py-3 rounded-xl"
+          className="
+          mt-6
+          bg-blue-900
+          text-white
+          px-6
+          py-3
+          rounded-xl
+          "
         >
           {editingId ? "Update" : "Add"}
         </button>
@@ -209,7 +280,30 @@ function ManagementPage({
       {/* DATA */}
       <div className="space-y-6">
         {items.map((item) => (
-          <div key={item._id} className="bg-white p-6 rounded-3xl shadow-lg">
+          <div
+            key={item._id}
+            className="
+            bg-white
+            p-6
+            rounded-3xl
+            shadow-lg
+            "
+          >
+            {/* IMAGE */}
+            {item.image && (
+              <img
+                src={`http://localhost:5000/uploads/${item.image}`}
+                alt=""
+                className="
+                w-28
+                h-28
+                rounded-full
+                object-cover
+                mb-6
+                "
+              />
+            )}
+
             <div className="grid md:grid-cols-3 gap-4">
               {columns.map((col) => (
                 <div key={col.key}>
@@ -225,7 +319,13 @@ function ManagementPage({
               <button
                 type="button"
                 onClick={() => handleEdit(item)}
-                className="bg-yellow-500 text-white px-4 py-2 rounded-lg"
+                className="
+                bg-yellow-500
+                text-white
+                px-4
+                py-2
+                rounded-lg
+                "
               >
                 Edit
               </button>
@@ -233,7 +333,13 @@ function ManagementPage({
               <button
                 type="button"
                 onClick={() => handleDelete(item._id)}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                className="
+                bg-red-500
+                text-white
+                px-4
+                py-2
+                rounded-lg
+                "
               >
                 Delete
               </button>

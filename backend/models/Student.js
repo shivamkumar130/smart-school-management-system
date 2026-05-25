@@ -8,6 +8,9 @@ const studentSchema = new mongoose.Schema(
     fatherName: String,
     mobile: String,
     email: String,
+    image: String,
+    AddharNumber: String,
+    image: String,
   },
   { timestamps: true },
 );
