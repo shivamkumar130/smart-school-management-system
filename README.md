@@ -1,132 +1,133 @@
-# P.S. Sarangpur Gopalpur School ERP Portal
+# Smart School Management System
 
-A full-stack school management portal with a React frontend and Express/MongoDB backend.
+Full-stack School Management Portal — React frontend and Express/MongoDB backend. This README summarizes the project, analyzes the main components, and provides setup and usage instructions for development.
 
 ## Project Overview
 
-This repository contains two main parts:
+- **Frontend:** React app (frontend/) providing UI for admins, teachers, and students.
+- **Backend:** Express API (backend/) handling authentication, students, teachers, attendance, homework, notices, results and timetables.
+- **Extras:** A Python script (`faceRecognition.py`) for face-based attendance and an uploads folder for media.
 
-- `backend/` - Express API server for authentication, students, teachers, notices, attendance, homework, results, and timetable management.
-- `frontend/` - React application for public pages and role-based admin/student/teacher dashboards.
+## Tech Stack
 
-The app supports:
+- Frontend: React, Tailwind CSS
+- Backend: Node.js, Express
+- Database: MongoDB (expected)
+- Extras: Python (face recognition), Multer for uploads, Nodemon for development
 
-- user registration and login
-- role-based access for admin, teacher, and student
-- notices and announcements
-- class attendance tracking
-- homework management
-- results display
-- timetable management
-- password recovery via email
+## Repository Structure (high level)
 
-## Technologies Used
+- `backend/` — Express server, models, routes, middleware, config
+  - `server.js` — entry point for backend
+  - `models/` — Mongoose models: `Student.js`, `Teacher.js`, `Attendance.js`, `Homework.js`, `Notice.js`, `Result.js`, `Timetable.js`, `User.js`
+  - `routes/` — API routes grouped by resource (attendance, auth, students, teachers, etc.)
+  - `config/` — configuration such as `mailConfig.js`
+  - `middleware/` — upload helpers and other middleware
+  - `faceRecognition.py` — face-attendance helper (runs separately in Python)
 
-- Frontend: React, React Router, Axios, Tailwind CSS, Create React App
-- Backend: Node.js, Express, MongoDB, Mongoose, JWT, bcryptjs, Nodemailer
-- Development: CORS, dotenv, nodemon
+- `frontend/` — React SPA
+  - `src/pages/` and `src/components/` — UI pages and components
+  - `package.json` — frontend scripts and dependencies
 
-## Folder Structure
+## Key Files
 
-- `backend/`
-  - `server.js` - backend entrypoint
-  - `routes/` - auth and CRUD API routes
-  - `models/` - Mongoose schemas for User, Student, Teacher, Attendance, Homework, Notice, Result, Timetable
-  - `config/mailConfig.js` - email transport configuration
-- `frontend/`
-  - `src/` - React pages and components
-  - `src/pages/` - route views for login, register, dashboards, attendance, homework, notices, results, timetable, profile, reports
-  - `src/components/` - shared UI sections like Navbar, Footer, Hero, Teachers, NoticeBoard
+- Backend: [backend/server.js](backend/server.js#L1) — starts the API server
+- Frontend: [frontend/src/index.js](frontend/src/index.js#L1) — React entry
+- Face recognition: [backend/faceRecognition.py](backend/faceRecognition.py#L1)
 
-## Backend Setup
+## Getting Started (Development)
 
-1. Open a terminal in `backend/`
-2. Install dependencies:
+Prerequisites:
+
+- Node.js (16+ recommended)
+- npm or yarn
+- MongoDB running locally or remotely
+- Python 3.x (if using face recognition feature)
+
+Backend
+
+1. Open a terminal and install dependencies:
 
 ```bash
+cd backend
 npm install
 ```
 
-3. Create a `.env` file with:
+2. Provide environment variables (create a `.env` or set your env):
 
-```env
-MONGO_URI=<your MongoDB connection string>
-JWT_SECRET=<your jwt secret>
-EMAIL_USER=<your gmail address>
-EMAIL_PASS=<your gmail app password>
-```
+- `MONGODB_URI` — MongoDB connection string
+- `PORT` — backend port (default 5000)
+- Mail config or other secrets as used in `config/mailConfig.js`
 
-4. Start the backend server:
+3. Start the backend:
 
 ```bash
-npm run dev
+cd backend
+npm run dev    # or `node server.js` / `nodemon server.js`
 ```
 
-The backend runs by default on `http://localhost:5000`.
+Frontend
 
-## Frontend Setup
-
-1. Open a terminal in `frontend/`
-2. Install dependencies:
+1. Install dependencies and start the dev server:
 
 ```bash
+cd frontend
 npm install
-```
-
-3. Start the frontend app:
-
-```bash
 npm start
 ```
 
-The app runs by default on `http://localhost:3000`.
+2. The frontend dev server typically runs on `http://localhost:3000` and makes API calls to the backend. If needed, configure a proxy in `frontend/package.json`.
 
-## API Endpoints
+Face recognition (optional)
 
-The backend exposes the following route groups:
-
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/forgot-password`
-- `POST /api/auth/reset-password/:token`
-- `GET/POST/PUT/DELETE /api/students`
-- `GET/POST/PUT/DELETE /api/teachers`
-- `GET/POST/PUT/DELETE /api/notices`
-- `GET/POST/PUT/DELETE /api/attendance`
-- `GET/POST/PUT/DELETE /api/results`
-- `GET/POST/PUT/DELETE /api/homework`
-- `GET/POST/PUT/DELETE /api/timetable`
-
-## Notes
-
-- The frontend uses the reset password URL `http://localhost:3000/reset-password/<token>` for password recovery.
-- CORS is enabled in the backend so the React app can communicate with the API during development.
-
-## Build & Deployment
-
-- Production frontend build: `npm run build` from `frontend/`
-- Backend production start: `npm start` from `backend/`
-
-## Recommended Workflow
-
-1. Start backend first.
-2. Start frontend next.
-3. Use browser at `http://localhost:3000`.
-
-## Helpful Commands
-
-From `backend/`:
+- The face recognition script is a separate Python utility in `backend/faceRecognition.py`. It likely requires OpenCV and additional Python packages — inspect the script to determine exact requirements. Run it with:
 
 ```bash
-npm run dev
+python backend/faceRecognition.py
 ```
 
-From `frontend/`:
+## API Surface (overview)
 
-```bash
-npm start
-```
+Look under `backend/routes/` for endpoints. Main route groups include:
 
-## License
+- `authRoutes.js` — authentication (login/register/reset)
+- `studentRoutes.js` — student CRUD
+- `teacherRoutes.js` — teacher CRUD
+- `attendanceRoutes.js` & `faceAttendanceRoutes.js` — attendance endpoints
+- `homeworkRoutes.js`, `noticeRoutes.js`, `resultRoutes.js`, `timetableRoutes.js` — respective features
 
-This project is available under the ISC license.
+Inspect each route file to see exact URLs and required parameters.
+
+## Notes & Analysis
+
+- The project is split cleanly between frontend and backend; start each service independently during development.
+- Environment variables and a MongoDB instance are required to run the backend.
+- File uploads are handled in `backend/middleware/upload.js` and stored under `backend/uploads/`.
+- The `temp/` and `backend/students.json` files appear to contain sample or backup data.
+- The Python face recognition utility is optional but useful for automated attendance; it will need separate dependencies.
+
+## Common Tasks
+
+- Run backend in development: `cd backend && npm run dev`
+- Run frontend: `cd frontend && npm start`
+- Build frontend for production: `cd frontend && npm run build`
+
+## Contributing
+
+- If you want changes to this README or project structure, open an issue or send a PR describing the intent and any setup steps.
+
+## Next Steps (recommended)
+
+1. Add an `.env.example` at `backend/` documenting required env variables.
+2. Add a short CONTRIBUTING.md describing how to run backend, frontend, and the face recognition script.
+3. Add a small script or Makefile to start both frontend and backend concurrently for easier developer onboarding.
+
+---
+
+If you'd like, I can:
+
+- add `.env.example` and a `CONTRIBUTING.md`,
+- enumerate exact API endpoints with methods and sample requests by scanning `backend/routes/`, or
+- create a dev script to run both services together.
+
+Tell me which of those you'd like next.

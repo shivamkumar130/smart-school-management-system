@@ -15,7 +15,7 @@ function Profile() {
 
       // BACKEND FETCH
       const response = await axios.get(
-        `http://localhost:5000/api/students/profile/${email}`,
+        `https://ps-sarangpur-gopalpur-backend.onrender.com/api/students/profile/${email}`,
       );
 
       setStudent(response.data);

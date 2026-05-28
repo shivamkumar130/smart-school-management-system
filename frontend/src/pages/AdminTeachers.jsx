@@ -4,7 +4,7 @@ export default function AdminTeachers() {
   return (
     <ManagementPage
       title="Teacher Management"
-      endpoint="http://localhost:5000/api/teachers"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/teachers"
       fields={[
         {
           name: "name",
@@ -34,7 +34,7 @@ export default function AdminTeachers() {
           name: "image",
           label: "Teacher Image",
           type: "file",
-        }
+        },
       ]}
       columns={[
         {
@@ -65,7 +65,7 @@ export default function AdminTeachers() {
           key: "image",
           label: "Teacher Image",
           type: "file",
-        }
+        },
       ]}
     />
   );

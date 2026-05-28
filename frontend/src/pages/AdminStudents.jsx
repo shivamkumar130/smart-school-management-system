@@ -5,7 +5,7 @@ export default function TeacherStudents() {
   return (
     <ManagementPage
       title="Student Management"
-      endpoint="http://localhost:5000/api/students"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/students"
       fields={[
         {
           name: "name",

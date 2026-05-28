@@ -13,7 +13,7 @@ function StudentResults() {
 
   const fetchResults = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/results");
+      const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/results");
 
       // ONLY LOGIN STUDENT RESULT
       const filteredResults = res.data.filter(

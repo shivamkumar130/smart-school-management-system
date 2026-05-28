@@ -4,7 +4,7 @@ export default function AdminHomework() {
   return (
     <ManagementPage
       title="Homework Management"
-      endpoint="http://localhost:5000/api/homework"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/homework"
       fields={[
         {
           name: "title",

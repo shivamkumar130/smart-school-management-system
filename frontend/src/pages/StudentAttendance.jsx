@@ -6,7 +6,7 @@ export default function StudentAttendance() {
   return (
     <ReadOnlyPage
       title="Student Attendance"
-      endpoint="http://localhost:5000/api/attendance"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance"
       columns={[
         { key: "studentName", label: "Student" },
         { key: "className", label: "Class" },

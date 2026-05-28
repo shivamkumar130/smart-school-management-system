@@ -292,7 +292,7 @@ function ManagementPage({ title, endpoint, fields = [], columns = [] }) {
             {/* IMAGE */}
             {item.image && (
               <img
-                src={`http://localhost:5000/uploads/${item.image}`}
+                src={`https://ps-sarangpur-gopalpur-backend.onrender.com/uploads/${item.image}`}
                 alt=""
                 className="
                 w-28

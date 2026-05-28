@@ -24,7 +24,7 @@ function Students() {
   // ================= FETCH =================
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/students");
+      const response = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/students");
 
       setStudents(response.data);
     } catch (error) {
@@ -38,7 +38,7 @@ function Students() {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/students/${editingId}`, {
+        await axios.put(`https://ps-sarangpur-gopalpur-backend.onrender.com/api/students/${editingId}`, {
           name,
           rollNumber,
           className,
@@ -48,7 +48,7 @@ function Students() {
 
         alert("Student Updated");
       } else {
-        await axios.post("http://localhost:5000/api/students", {
+        await axios.post("https://ps-sarangpur-gopalpur-backend.onrender.com/api/students", {
           name,
           rollNumber,
           className,
@@ -76,7 +76,7 @@ function Students() {
   // ================= DELETE =================
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/students/${id}`);
+      await axios.delete(`https://ps-sarangpur-gopalpur-backend.onrender.com/api/students/${id}`);
 
       fetchStudents();
     } catch (error) {

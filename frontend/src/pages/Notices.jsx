@@ -10,7 +10,7 @@ export default function NoticeBoard() {
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/notices");
+      const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/notices");
 
       setNotices(res.data);
     } catch (error) {

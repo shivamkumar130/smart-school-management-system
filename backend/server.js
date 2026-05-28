@@ -1,25 +1,19 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-require("dotenv").config();
-
 const authRoutes = require("./routes/authRoutes");
-
 const studentRoutes = require("./routes/studentRoutes");
-
 const teacherRoutes = require("./routes/teacherRoutes");
-
 const noticeRoutes = require("./routes/noticeRoutes");
-
 const attendanceRoutes = require("./routes/attendanceRoutes");
-
 const resultRoutes = require("./routes/resultRoutes");
-
 const homeworkRoutes = require("./routes/homeworkRoutes");
-
 const timetableRoutes = require("./routes/timetableRoutes");
 const faceAttendanceRoutes = require("./routes/faceAttendanceRoutes");
+
 const app = express();
 
 // ================= MIDDLEWARE =================
@@ -32,21 +26,13 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 // ================= ROUTES =================
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/students", studentRoutes);
-
 app.use("/api/teachers", teacherRoutes);
-
 app.use("/api/notices", noticeRoutes);
-
 app.use("/api/attendance", attendanceRoutes);
-
 app.use("/api/results", resultRoutes);
-
 app.use("/api/homework", homeworkRoutes);
-
 app.use("/api/timetable", timetableRoutes);
-
 app.use("/api/attendance", faceAttendanceRoutes);
 
 app.use("/uploads", express.static("uploads"));
@@ -55,11 +41,9 @@ app.use("/uploads", express.static("uploads"));
 
 mongoose
   .connect(process.env.MONGO_URI)
-
   .then(() => {
     console.log("MongoDB Connected");
   })
-
   .catch((error) => {
     console.log(error);
   });

@@ -9,7 +9,7 @@ export default function Teachers() {
   }, []);
 
   const fetchTeachers = async () => {
-    const res = await axios.get("http://localhost:5000/api/teachers");
+    const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/teachers");
 
     setTeachers(res.data);
   };
@@ -22,7 +22,7 @@ export default function Teachers() {
         {teachers.map((teacher) => (
           <div key={teacher._id} className="bg-white p-6 rounded-3xl shadow">
             <img
-              src={`http://localhost:5000/uploads/${teacher.image}`}
+              src={`https://ps-sarangpur-gopalpur-backend.onrender.com/uploads/${teacher.image}`}
               alt={teacher.name}
               className="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-blue-900"
             />

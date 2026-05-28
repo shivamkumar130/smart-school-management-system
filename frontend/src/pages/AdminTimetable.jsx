@@ -4,7 +4,7 @@ export default function AdminTimetable() {
   return (
     <ManagementPage
       title="Timetable Management"
-      endpoint="http://localhost:5000/api/timetable"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/timetable"
       fields={[
         {
           name: "className",

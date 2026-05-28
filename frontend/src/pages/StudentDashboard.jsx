@@ -30,7 +30,7 @@ function StudentDashboard() {
   // ================= FETCH HOMEWORK =================
   const fetchHomework = async (studentClass) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/homework");
+      const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/homework");
 
       const filteredHomework = res.data.filter(
         (hw) => hw.className === studentClass,
@@ -45,7 +45,7 @@ function StudentDashboard() {
   // ================= FETCH ATTENDANCE =================
   const fetchAttendance = async (studentName) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/attendance");
+      const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance");
 
       const filteredAttendance = res.data.filter(
         (att) => att.studentName === studentName,
@@ -60,7 +60,7 @@ function StudentDashboard() {
   // ================= FETCH RESULTS =================
   const fetchResults = async (studentName) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/results");
+      const res = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/results");
 
       const filteredResults = res.data.filter(
         (result) => result.studentName === studentName,

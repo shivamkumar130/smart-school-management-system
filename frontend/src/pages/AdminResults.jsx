@@ -4,7 +4,7 @@ export default function AdminResults() {
   return (
     <ManagementPage
       title="Result Management"
-      endpoint="http://localhost:5000/api/results"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/results"
       fields={[
         { name: "studentName", label: "Student Name" },
         { name: "className", label: "Class" },

@@ -4,7 +4,7 @@ export default function StudentNotices() {
   return (
     <ReadOnlyPage
       title="Student Notices"
-      endpoint="http://localhost:5000/api/notices"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/notices"
       columns={[
         { key: "title", label: "Title" },
         { key: "message", label: "Message" },

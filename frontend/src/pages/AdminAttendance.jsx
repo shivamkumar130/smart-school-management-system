@@ -4,7 +4,7 @@ export default function AdminAttendance() {
   return (
     <ManagementPage
       title="Attendance Management"
-      endpoint="http://localhost:5000/api/attendance"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance"
       fields={[
         { name: "studentName", label: "Student Name" },
         { name: "className", label: "Class" },

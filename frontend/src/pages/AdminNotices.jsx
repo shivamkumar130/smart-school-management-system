@@ -4,7 +4,7 @@ export default function AdminNotices() {
   return (
     <ManagementPage
       title="Notice Management"
-      endpoint="http://localhost:5000/api/notices"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/notices"
       fields={[
         {
           name: "title",

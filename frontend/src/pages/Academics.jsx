@@ -8,7 +8,9 @@ function Academics() {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/students");
+        const res = await axios.get(
+          "https://ps-sarangpur-gopalpur-backend.onrender.com/api/students"
+        );
 
         setStudents(res.data);
       } catch (error) {

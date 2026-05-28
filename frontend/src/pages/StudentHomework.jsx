@@ -19,7 +19,7 @@ function StudentHomework() {
       console.log("Student Class:", className);
 
       // FETCH ALL HOMEWORK
-      const response = await axios.get("http://localhost:5000/api/homework");
+      const response = await axios.get("https://ps-sarangpur-gopalpur-backend.onrender.com/api/homework");
 
       console.log(response.data);
 

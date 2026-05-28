@@ -8,7 +8,7 @@ function StudentTimetable() {
   return (
     <ReadOnlyPage
       title="Class Timetable"
-      endpoint="http://localhost:5000/api/timetable"
+      endpoint="https://ps-sarangpur-gopalpur-backend.onrender.com/api/timetable"
       columns={[
         {
           key: "day",

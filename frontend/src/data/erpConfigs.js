@@ -1,6 +1,6 @@
 export const studentConfig = {
   title: "Student Management",
-  endpoint: "http://localhost:5000/api/students",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/students",
   fields: [
     { name: "name", label: "Student Name", type: "text" },
     { name: "rollNumber", label: "Roll Number", type: "text" },
@@ -19,7 +19,7 @@ export const studentConfig = {
 
 export const teacherConfig = {
   title: "Teacher Management",
-  endpoint: "http://localhost:5000/api/teachers",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/teachers",
   fields: [
     { name: "name", label: "Teacher Name", type: "text" },
     { name: "qualification", label: "Qualification", type: "text" },
@@ -39,7 +39,7 @@ export const teacherConfig = {
 
 export const noticeConfig = {
   title: "Notice Management",
-  endpoint: "http://localhost:5000/api/notices",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/notices",
   fields: [
     { name: "title", label: "Notice Title", type: "text" },
     { name: "message", label: "Notice Message", type: "textarea" },
@@ -52,7 +52,7 @@ export const noticeConfig = {
 
 export const attendanceConfig = {
   title: "Attendance Management",
-  endpoint: "http://localhost:5000/api/attendance",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance",
   fields: [
     { name: "studentName", label: "Student Name", type: "text" },
     { name: "className", label: "Class", type: "text" },
@@ -74,7 +74,7 @@ export const attendanceConfig = {
 
 export const resultConfig = {
   title: "Result Management",
-  endpoint: "http://localhost:5000/api/results",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/results",
   fields: [
     { name: "studentName", label: "Student Name", type: "text" },
     { name: "className", label: "Class", type: "text" },
@@ -104,7 +104,7 @@ export const resultConfig = {
 
 export const homeworkConfig = {
   title: "Homework Management",
-  endpoint: "http://localhost:5000/api/homework",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/homework",
   fields: [
     { name: "title", label: "Homework Title", type: "text" },
     { name: "subject", label: "Subject", type: "text" },
@@ -122,7 +122,7 @@ export const homeworkConfig = {
 
 export const studentNoticeReadOnlyConfig = {
   title: "Student Notices",
-  endpoint: "http://localhost:5000/api/notices",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/notices",
   columns: [
     { key: "title", label: "Title" },
     { key: "message", label: "Message" },
@@ -131,7 +131,7 @@ export const studentNoticeReadOnlyConfig = {
 
 export const studentAttendanceReadOnlyConfig = {
   title: "Student Attendance",
-  endpoint: "http://localhost:5000/api/attendance",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance",
   columns: [
     { key: "studentName", label: "Student" },
     { key: "className", label: "Class" },
@@ -143,7 +143,7 @@ export const studentAttendanceReadOnlyConfig = {
 
 export const studentResultReadOnlyConfig = {
   title: "Student Results",
-  endpoint: "http://localhost:5000/api/results",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/results",
   columns: [
     { key: "studentName", label: "Student" },
     { key: "className", label: "Class" },
@@ -157,7 +157,7 @@ export const studentResultReadOnlyConfig = {
 
 export const studentHomeworkReadOnlyConfig = {
   title: "Student Homework",
-  endpoint: "http://localhost:5000/api/homework",
+  endpoint: "https://ps-sarangpur-gopalpur-backend.onrender.com/api/homework",
   columns: [
     { key: "title", label: "Title" },
     { key: "subject", label: "Subject" },
