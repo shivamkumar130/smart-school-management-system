@@ -17,7 +17,7 @@ import ResetPassword from "./pages/ResetPassword";
 import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
-import AttendanceCamera from "./pages/AttendanceCamera";
+// import AttendanceCamera from "./pages/AttendanceCamera";
 
 // ================= ADMIN / TEACHER CRUD PAGES =================
 import AdminStudents from "./pages/AdminStudents";
