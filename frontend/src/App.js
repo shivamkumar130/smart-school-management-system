@@ -83,7 +83,7 @@ function App() {
         <Route path="/admin/timetable" element={<AdminTimetable />} />
 
         <Route path="/admin/academics" element={<Academics />} />
-        <Route path="/attendance-camera" element={<AttendanceCamera />} />
+        {/* <Route path="/attendance-camera" element={<AttendanceCamera />} /> */}
 
         {/* ================= TEACHER ROUTES ================= */}
 
