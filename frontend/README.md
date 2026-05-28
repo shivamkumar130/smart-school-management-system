@@ -62,8 +62,7 @@ EMAIL_PASS=<your gmail app password>
 npm run dev
 ```
 
-The backend runs by default on `http://localhost:5000`.
-
+The backend runs by default on `https://ps-sarangpur-gopalpur-backend.onrender.com
 ## Frontend Setup
 
 1. Open a terminal in `frontend/`

@@ -33,7 +33,7 @@ app.use("/api/attendance", attendanceRoutes);
 app.use("/api/results", resultRoutes);
 app.use("/api/homework", homeworkRoutes);
 app.use("/api/timetable", timetableRoutes);
-app.use("/api/attendance", faceAttendanceRoutes);
+// app.use("/api/attendance", faceAttendanceRoutes);
 
 app.use("/uploads", express.static("uploads"));
 

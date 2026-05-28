@@ -25,7 +25,7 @@ function AttendanceCamera() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/attendance/face",
+        "https://ps-sarangpur-gopalpur-backend.onrender.com/api/attendance/face",
 
         {
           image: imageSrc,
