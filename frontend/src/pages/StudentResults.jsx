@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 function StudentResults() {
   const [results, setResults] = useState([]);
 
   const studentName = localStorage.getItem("name");
-  useEffect(() => {
-    const loadData = async () => {
-      await fetchResults();
-    };
 
-    loadData();
-  }, []);
+  // ================= FETCH RESULTS =================
 
-  const fetchResults = async () => {
+  const fetchResults = useCallback(async () => {
     try {
       const res = await axios.get(
         "https://ps-sarangpur-gopalpur-backend.onrender.com/api/results",
@@ -29,7 +24,13 @@ function StudentResults() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [studentName]);
+
+  // ================= LOAD DATA =================
+
+  useEffect(() => {
+    fetchResults();
+  }, [fetchResults]);
 
   return (
     <div className="p-8">
@@ -44,27 +45,22 @@ function StudentResults() {
                 <p className="font-bold">{result.studentName}</p>
 
                 <p className="text-gray-500 mt-4">English</p>
-
                 <p className="font-bold">{result.english}</p>
               </div>
 
               <div>
                 <p className="text-gray-500">Class</p>
-
                 <p className="font-bold">{result.className}</p>
 
                 <p className="text-gray-500 mt-4">EVS</p>
-
                 <p className="font-bold">{result.evs}</p>
               </div>
 
               <div>
                 <p className="text-gray-500">Maths</p>
-
                 <p className="font-bold">{result.maths}</p>
 
                 <p className="text-gray-500 mt-4">Total</p>
-
                 <p className="font-bold">{result.total}</p>
               </div>
             </div>
