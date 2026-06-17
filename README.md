@@ -122,12 +122,3 @@ Inspect each route file to see exact URLs and required parameters.
 2. Add a short CONTRIBUTING.md describing how to run backend, frontend, and the face recognition script.
 3. Add a small script or Makefile to start both frontend and backend concurrently for easier developer onboarding.
 
----
-
-If you'd like, I can:
-
-- add `.env.example` and a `CONTRIBUTING.md`,
-- enumerate exact API endpoints with methods and sample requests by scanning `backend/routes/`, or
-- create a dev script to run both services together.
-
-Tell me which of those you'd like next.
